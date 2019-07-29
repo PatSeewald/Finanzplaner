@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1" />
+
+  <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="./css/styles.css" rel="stylesheet" type="text/css">
+
+  <title>Capture Photo</title>
+
+</head>
+
+<body>
+
+  <!-- START Navigation -->
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+
+    <div class="collapse navbar-collapse" id="navbarsExample02">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item ">
+          <button class="navBtn  no-focus-outline" id="navLogo"> </button>
+        </li>
+        <li class="nav-item mr-3">
+          <button onclick="capturePhotoWithData();" class="navBtn no-focus-outline">
+            <svg viewBox="0 0 307 307" width="50px" height="50px" id="btnGetPicture" class="btnSvg">
+              <path d="M284.909,66.146h-81.345l-16.426-27.595c-1.607-2.698-4.514-4.351-7.654-4.351h-51.662c-3.14,0-6.048,1.653-7.654,4.351
+               l-16.426,27.595H77.049v-6.082c0-4.919-3.988-8.907-8.907-8.907H35.185c-4.92,0-8.907,3.988-8.907,8.907v6.082h-3.88
+               C10.027,66.146,0,76.174,0,88.543v162.166c0,12.37,10.027,22.398,22.397,22.398h262.512c12.37,0,22.398-10.028,22.398-22.398
+               V88.543C307.308,76.174,297.279,66.146,284.909,66.146z M153.653,233.379c-35.21,0-63.753-28.543-63.753-63.754
+               c0-35.209,28.543-63.753,63.753-63.753c35.21,0,63.753,28.544,63.753,63.753C217.406,204.836,188.863,233.379,153.653,233.379z
+                M270.935,112.322h-27.91c-4.919,0-8.907-3.988-8.907-8.908c0-4.92,3.988-8.908,8.907-8.908h27.91c4.921,0,8.908,3.988,8.908,8.908
+               C279.843,108.334,275.855,112.322,270.935,112.322z" />
+              <circle cx="153.653" cy="169.625" r="44.538" />
+            </svg>
+            Scan
+          </button>
+          <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
+        </li>
+        <li class="nav-item mr-3">
+          <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);" class="navBtn no-focus-outline">
+            <svg viewBox="0 0 1000 1000" width="50px" height="50px" class="btnSvg">
+              <path
+                d="M251.8,382.6c46.2,0,83.6-37.4,83.6-83.6c0-46.2-37.4-83.6-83.6-83.6c-46.2,0-83.6,37.4-83.6,83.6C168.1,345.2,205.6,382.6,251.8,382.6z" />
+              <path
+                d="M503.5,488.3l-64.3-68.7L272.5,615.1l-68.4-62.5l-99.5,127.1h693.6V552.5l-163-234.9L503.5,488.3z" />
+              <path
+                d="M896.9,679.2V224.7c0-56.6-42.5-102.7-94.8-102.7H104.8C52.5,122,10,168.1,10,224.7v454.5c0,56.6,42.5,102.7,94.8,102.7H802C854.3,781.9,896.9,735.8,896.9,679.2z M58.7,679.2V224.7c0-29.8,20.7-54,46.2-54H802c25.5,0,46.2,24.2,46.2,54v454.5c0,29.8-20.7,54-46.2,54H104.8C79.4,733.2,58.7,709,58.7,679.2z" />
+              <path
+                d="M932.7,226.6l0.1,63c6.6,9.3,8.5,18.2,8.5,31.2v454.5c0,29.8-20.7,54-46.2,54H198c-15.1,0-22.1-2.1-31.9-15c-13,0.3-42.6,0-55.8,0c12,43.2,46,63.6,87.7,63.6h697.2c52.3,0,94.8-46.1,94.8-102.7V320.8C990,277.8,967.4,241.9,932.7,226.6z" />
+            </svg>
+            Upload
+          </button>
+        </li>
+        <li class="nav-item mr-3">
+          <button type="button" data-toggle="modal" data-target="#configModal" class="navBtn no-focus-outline">
+            <svg version="1.1" id="Capa_1" viewBox="0 0 29.643 29.643" width="50px" height="50px" class="btnSvg">
+              <path d="M18.621,12.397l-0.546-1.295c0,0,1.267-2.859,1.157-2.969l-1.678-1.639c-0.117-0.113-2.978,1.191-2.978,1.191l-1.32-0.533
+                 c0,0-1.169-2.898-1.327-2.898h-2.37c-0.164,0-1.242,2.906-1.242,2.906L6.998,7.695c0,0-2.922-1.242-3.034-1.135L2.287,8.203
+                 c-0.116,0.115,1.219,2.916,1.219,2.916l-0.544,1.295c0,0-2.962,1.139-2.962,1.295v2.322c0,0.16,2.969,1.217,2.969,1.217
+                 l0.545,1.291c0,0-1.268,2.861-1.157,2.971l1.679,1.641c0.113,0.111,2.976-1.195,2.976-1.195l1.321,0.537
+                 c0,0,1.166,2.896,1.326,2.896h2.37c0.163,0,1.244-2.906,1.244-2.906l1.32-0.535c0,0,2.918,1.242,3.031,1.135l1.678-1.643
+                 c0.115-0.111-1.221-2.914-1.221-2.914l0.546-1.295c0,0,2.963-1.143,2.963-1.299v-2.32C21.591,13.453,18.621,12.397,18.621,12.397z
+                  M10.795,18.207c-1.905,0-3.459-1.52-3.459-3.387c0-1.865,1.554-3.385,3.459-3.385c1.908,0,3.459,1.52,3.459,3.385
+                 C14.254,16.688,12.703,18.207,10.795,18.207z" />
+              <path d="M28.538,9.693l0.014-0.676c0,0,1.118-1.006,1.091-1.076l-0.414-1.048c-0.031-0.072-1.544-0.062-1.544-0.062l-0.474-0.492
+                 c0,0,0.058-1.502-0.013-1.533l-1.041-0.467c-0.074-0.033-1.117,1.035-1.117,1.035l-0.684-0.027c0,0-1.039-1.119-1.109-1.092
+                 l-1.061,0.393c-0.071,0.025-0.036,1.518-0.036,1.518l-0.495,0.463c0,0-1.523-0.082-1.554-0.014l-0.457,1.02
+                 c-0.032,0.072,1.065,1.119,1.065,1.119l-0.014,0.672c0,0-1.117,1.008-1.09,1.078l0.415,1.049c0.03,0.07,1.543,0.059,1.543,0.059
+                 l0.473,0.494c0,0-0.055,1.502,0.016,1.533l1.041,0.465c0.072,0.033,1.116-1.029,1.116-1.029l0.685,0.023
+                 c0,0,1.037,1.119,1.109,1.094l1.058-0.393c0.073-0.025,0.038-1.52,0.038-1.52l0.494-0.459c0,0,1.523,0.078,1.555,0.01l0.457-1.02
+                 C29.634,10.74,28.538,9.693,28.538,9.693z M26.145,9.9c-0.367,0.82-1.347,1.184-2.187,0.809c-0.836-0.373-1.22-1.346-0.853-2.168
+                 c0.365-0.818,1.348-1.18,2.184-0.807C26.126,8.111,26.51,9.082,26.145,9.9z" />
+            </svg>
+            Configure
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- END Navigation -->
+
+  <!-- START Thumbnail -->
+  <div class="invisible row m-0 mt-4" id="smallImageContainer">
+    <div class="col-12">
+      <img id="smallImage" src="" />
+    </div>
+
+    <div class="col-6 text-center mt-4">
+      <button class="no-focus-outline btnThumb" onclick="deletePhoto()">
+        <svg width="32" height="32" viewBox="0 0 32 32" class="btnDelete">
+          <path
+            d="M4 10v20c0 1.1 0.9 2 2 2h18c1.1 0 2-0.9 2-2v-20h-22zM10 28h-2v-14h2v14zM14 28h-2v-14h2v14zM18 28h-2v-14h2v14zM22 28h-2v-14h2v14z">
+          </path>
+          <path
+            d="M26.5 4h-6.5v-2.5c0-0.825-0.675-1.5-1.5-1.5h-7c-0.825 0-1.5 0.675-1.5 1.5v2.5h-6.5c-0.825 0-1.5 0.675-1.5 1.5v2.5h26v-2.5c0-0.825-0.675-1.5-1.5-1.5zM18 4h-6v-1.975h6v1.975z">
+          </path>
+        </svg>
+        Bild löschen
+      </button>
+    </div>
+    <div class="col-6 text-center mt-4">
+      <button class="no-focus-outline btnThumb" onclick="sendToServer(sessionStorage.getItem('actualImage'))">
+        <svg width="32" height="32" viewBox="0 0 32 32" class="btnSend">
+
+          <path d="M27 4l-15 15-7-7-5 5 12 12 20-20z"></path>
+        </svg>
+        Bild senden
+      </button>
+    </div>
+  </div>
+  <!-- END Thumbnail -->
+
+  <div id="debug"></div>
+
+  <div class="modal fade" id="configModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Server konfigurieren</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="text-white">&times;</span>
+          </button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <div class="form-group row">
+              <label for="urlInput" class="col-3 col-form-label">URL</label>
+              <div class="col-9 mb-1">
+                <input class="form-control" type="url" placeholder="URL eingeben" data-bind="value: url" required
+                  id="urlInput">
+              </div>
+              <label for="methodInput" class="col-3 col-form-label">Methode</label>
+              <div class="col-9">
+                <input class="form-control" type="text" placeholder="Methode eingeben" maxlength="6"
+                  data-bind="value: method" required id="methodInput">
+              </div>
+              <label for="profileInput" class="col-3 col-form-label">Profil</label>
+              <div class="col-9">
+                <select class="custom-select" id="profileInput" disabled>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+              <button type="submit" class="btn btn-primary">Speichern</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+
+
+    <script type="text/javascript" charset="utf-8" src="./js/jquery.min.js"></script>
+    <script src="../www/knockout/knockout-3.5.0.js"></script>
+    <script src="../www/knockout/knockout-mapping-2.4.1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./js/bootstrap.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./js/index.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./js/photo.js"></script>
+
+    <script>
+      let viewModel = {
+        url: 'http://84.16.242.168:8287/finance/import',
+        method: 'post'
+      }
+
+      $(document).on('deviceready', () => {
+
+        ko.applyBindings(viewModel);
+      })
+    </script>
+</body>
+
+</html>
