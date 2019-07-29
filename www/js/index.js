@@ -52,7 +52,7 @@ var app = {
         function onDone(err, status) {
             if (err) {
                 // here we can handle errors and clean up any loose ends.
-                console.error(err);
+                // console.error(err);
             }
             if (status.authorized) {
                 // W00t, you have camera access and the scanner is initialized.
@@ -86,7 +86,7 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+        // console.log('Received Event: ' + id);
     }
 };
 

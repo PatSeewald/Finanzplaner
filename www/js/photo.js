@@ -1,13 +1,13 @@
 
 
-// show error on mobile
-window.onerror = function (err) {
-  console.log(err);
-  return true;
-}
-console.log = function (s) {
-  $('#debug').html(s).css({ padding: 10 });
-}
+// // show error on mobile
+// window.onerror = function (err) {
+//   console.log(err);
+//   return true;
+// }
+// console.log = function (s) {
+//   $('#debug').html(s).css({ padding: 10 });
+// }
 
 function sendToServer(file) {
   // FIX Jquery gzip  
