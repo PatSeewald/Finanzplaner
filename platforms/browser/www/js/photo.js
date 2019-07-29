@@ -1,5 +1,4 @@
 
-
 function sendToServer(file) {
   // FIX Jquery gzip  
   //  alert(viewModel.url)
