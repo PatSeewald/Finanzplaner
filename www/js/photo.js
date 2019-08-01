@@ -1,4 +1,8 @@
 
+/**
+ * Sendet einen Request an den Server und übergibt dabei das gescannte bzw. hochgeladene Image-File
+ * @param {*} file 
+ */
 function sendToServer(file) {
   // FIX Jquery gzip  
   //  alert(viewModel.url)
@@ -17,6 +21,9 @@ function sendToServer(file) {
   alert(serverImg)
 }
 
+/**
+ * Löscht das Vorschaubild (Thumbnail) und ermöglich ein erneutes Scannen
+ */
 function deletePhoto() {
   $('#smallImage')
   .attr({
@@ -26,24 +33,20 @@ function deletePhoto() {
   $('#smallImageContainer').toggleClass('invisible');
 }
 
-let pictureSource;   // picture source
-let destinationType; // sets the format of returned value 
-// var xhr = new XMLHttpRequest();
-let serverImg = '';
-
 // Wait for PhoneGap to connect with the device
-//
 document.addEventListener("deviceready", onDeviceReady, false);
 
 // PhoneGap is ready to be used!
-//
 function onDeviceReady() {
   pictureSource = navigator.camera.PictureSourceType;
   destinationType = navigator.camera.DestinationType;
 }
 
-// Called when a photo is successfully retrieved
-//
+
+/**
+ * Wird bei erfolgreichem Scannen eines Bildes aufgerufen => Speichert das aktuelle Bild in die Session und zeigt dieses als Thumbnail an
+ * @param {*} imageData 
+ */
 function onPhotoDataSuccess(imageData) {
   showThumbnail("data:image/jpeg;base64," + imageData);
   sessionStorage.setItem('actualImage', imageData)
@@ -51,29 +54,26 @@ function onPhotoDataSuccess(imageData) {
   // sendToServer(imageData);
 }
 
-// Called when a photo is successfully retrieved
+/**
+ * Wird bei erfolgreichem Hochladen eines Bildes aufgerufen => Speichert das aktuelle Bild in die Session und zeigt dieses als Thumbnail an
+ * @param {*} imageData 
+ */
 function onPhotoFileSuccess(imageData) {
-  serverImg = imageData;
-
   // Get image handle  
   JSON.stringify(imageData)
 
-  // Get image handle
-  //
+  // Get image handle  
   var smallImage = document.getElementById('smallImage');
 
-  // Unhide image elements
-  //
+  // Unhide image elements  
   smallImage.style.display = 'block';
 
-  // Show the captured photo
-  // The inline CSS rules are used to resize the image
-  //
+  // Show the captured photo    
   smallImage.src = imageData;
 }
 
 // Called when a photo is successfully retrieved
-//
+
 function onPhotoURISuccess(imageURI) {
   showThumbnail(imageURI);
 }

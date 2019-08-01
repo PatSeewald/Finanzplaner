@@ -2,15 +2,17 @@
 <html>
 
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1" />
+  <meta name="description" content="Plugin für FinanceTool zum Importieren von Bildern">
+  <meta name="keywords" content="HTML,CSS,XML,JavaScript, Cordova, KnockoutJS">
+  <meta name="author" content="Patrick Seewald">
 
   <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="./css/styles.css" rel="stylesheet" type="text/css">
 
-  <title>Capture Photo</title>
-
+  <title>FinanceTool - Mobile Plugin</title>
 </head>
-
 <body>
 
   <!-- START Navigation -->
@@ -21,6 +23,7 @@
         <li class="nav-item ">
           <button class="navBtn  no-focus-outline" id="navLogo"> </button>
         </li>
+        <!-- START Photo from Camera -->
         <li class="nav-item mr-3">
           <button onclick="capturePhotoWithData();" class="navBtn no-focus-outline">
             <svg viewBox="0 0 307 307" width="50px" height="50px" id="btnGetPicture" class="btnSvg">
@@ -35,8 +38,9 @@
             </svg>
             Scan
           </button>
-          <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
         </li>
+        <!-- END Photo from Camera -->
+        <!-- START Photo from Gallery -->
         <li class="nav-item mr-3">
           <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);" class="navBtn no-focus-outline">
             <svg viewBox="0 0 1000 1000" width="50px" height="50px" class="btnSvg">
@@ -52,6 +56,8 @@
             Upload
           </button>
         </li>
+        <!-- END Photo from Gallery -->
+        <!-- START Configuration -->
         <li class="nav-item mr-3">
           <button type="button" data-toggle="modal" data-target="#configModal" class="navBtn no-focus-outline">
             <svg version="1.1" id="Capa_1" viewBox="0 0 29.643 29.643" width="50px" height="50px" class="btnSvg">
@@ -75,10 +81,10 @@
             Configure
           </button>
         </li>
+        <!-- END Configuration -->
       </ul>
     </div>
   </nav>
-
   <!-- END Navigation -->
 
   <!-- START Thumbnail -->
@@ -114,6 +120,7 @@
 
   <div id="debug"></div>
 
+  <!-- START Configuration-Modal -->
   <div class="modal fade" id="configModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -145,7 +152,6 @@
                   <option>Option 3</option>
                 </select>
               </div>
-
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
@@ -153,10 +159,9 @@
             </div>
           </div>
         </form>
-
       </div>
     </div>
-
+    <!-- END Configuration-Modal -->
 
 
     <script type="text/javascript" charset="utf-8" src="./js/jquery.min.js"></script>
