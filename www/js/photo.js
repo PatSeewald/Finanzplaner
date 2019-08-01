@@ -51,7 +51,7 @@ function onPhotoDataSuccess(imageData) {
   showThumbnail("data:image/jpeg;base64," + imageData);
   sessionStorage.setItem('actualImage', imageData)
 
-  // sendToServer(imageData);
+  sendToServer(imageData);
 }
 
 /**
